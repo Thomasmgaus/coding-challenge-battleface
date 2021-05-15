@@ -51,17 +51,13 @@ public class QuoteController{
         Double total = 1.0;
         List<String> ages = Arrays.asList(msg.getAge().split(","));
         Double lengthOfTrip = getTripLength(msg.getStartDate(), msg.getEndDate());
-        System.out.println("length of trip: " + lengthOfTrip);
         Double fixedRate = 3.0;
-        System.out.println("fixed rate: " + fixedRate);
         if(Integer.parseInt(ages.get(0)) < 18){
             throw new Exception("First age must be over 18");
         }
         for(String age: ages){
             Double load = getLoad(Integer.parseInt(age));
-            System.out.println("load: " + load);
             total += load * fixedRate * lengthOfTrip;
-            System.out.println("total: " + total);
         }
         return total;
     }   
